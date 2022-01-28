@@ -1,0 +1,19 @@
+<html>
+  <script type="text/javascript" src="hash.js"></script>
+  <script type="text/javascript" src="aes.js"></script>
+      <p>Password</p><input id="inputBar2"></input>
+      <p id="s-key"></p>
+      <h1 id="new-encrypted"></h1>
+
+      <button onclick="login()">Access</button>
+      <script>
+        var mix = "OAMSXFgh9GGxbFOHGXrYTkLzAe52rdhVo4VF8cZ1SZeGqqVxwoJigr5uAJYRJ+9+3VSV4SGEy/dAwi4n2a0r6phUUpVBHUvKND73g6EbvKeS1FBOPg==";
+        function login(){
+          var password = SHA256(document.getElementById("inputBar2").value);
+          var origtext = Aes.Ctr.decrypt(mix, password, 256);
+          document.getElementById("s-key").innerHTML = "Seed Key Is: " + origtext;
+        }
+        
+      </script>
+
+</html>
